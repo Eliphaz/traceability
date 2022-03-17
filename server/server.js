@@ -18,7 +18,7 @@ var rollbar = new Rollbar({
 
 // record a generic message and send it to Rollbar
 rollbar.log('Hello world!')
-
+console.log('hello world')
 app.get('/', (req, res) => {
     try {
         nonExistentFunction();
@@ -29,6 +29,8 @@ app.get('/', (req, res) => {
         // Note - error messages will vary depending on browser
       }
 })
+
+app.use(rollbar.errorHandler())
 
 const port = process.env.PORT || 5050
 
